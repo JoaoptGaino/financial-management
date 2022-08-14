@@ -14,6 +14,35 @@ model Category {
   id   String @id @default(uuid())
   name String
 
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+  Operation Operation[]
+}
+
+model Operation {
+  id          String  @id @default(uuid())
+  name        String
+  description String
+  value       Decimal
+
+  payday  DateTime?
+  dueDate DateTime? @map("due_date")
+
+  operationType OperationType[] @map("operation_type")
+  categoryId    String          @map("category_id")
+
+  Category Category @relation(fields: [categoryId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum OperationType {
+  FIX
+  VARIABLE
+  FUN
+  INVESTMENT
+  ESSENTIAL
+  SALARY
+  EXPENSE
 }

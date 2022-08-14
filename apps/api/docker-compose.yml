@@ -1,0 +1,11 @@
+version: '3'
+services:
+  gaino-financial-management-db:
+    container_name: gaino-financial-management-db
+    image: postgres:13.4-alpine
+    environment:
+      - 'POSTGRES_DB=gaino_financial'
+      - 'POSTGRES_USER=root'
+      - 'POSTGRES_PASSWORD=root'
+    ports:
+      - '5432:5432'

@@ -11,7 +11,7 @@ import {
 import { CategoryService } from '../services/category.service';
 import { CreateCategoryDto } from '../dto/create-category.dto';
 import { UpdateCategoryDto } from '../dto/update-category.dto';
-import { FindAllCategorysDto } from '../dto/find-all-categorys.dto';
+import { FindAllCategoriesDto } from '../dto/find-all-categorys.dto';
 
 @Controller('category')
 export class CategoryController {
@@ -23,7 +23,7 @@ export class CategoryController {
   }
 
   @Get()
-  findAll(@Query() query: FindAllCategorysDto) {
+  findAll(@Query() query: FindAllCategoriesDto) {
     return this.categoryService.findAll(query);
   }
 

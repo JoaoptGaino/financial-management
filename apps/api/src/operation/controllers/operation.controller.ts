@@ -11,26 +11,25 @@ import {
 import { OperationService } from '../services/operation.service';
 import { CreateOperationDto } from '../dto/create-operation.dto';
 import { UpdateOperationDto } from '../dto/update-operation.dto';
-import { FindAllOperationDto } from '../dto/find-all-operation.dto';
+import { FindAllOperationsDto } from '../dto/find-all-operations.dto';
 
 @Controller('operation')
-export class OperationController{
-  constructor(private readonly undefinedService: OperationService){}
-
+export class OperationController {
+  constructor(private readonly operationService: OperationService) {}
 
   @Post()
   create(@Body() createOperationDto: CreateOperationDto) {
-    return this.undefinedsService.create(createOperationDto);
+    return this.operationService.create(createOperationDto);
   }
 
   @Get()
   findAll(@Query() query: FindAllOperationsDto) {
-    return this.undefinedsService.findAll(query);
+    return this.operationService.findAll(query);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.undefinedsService.findOne(id);
+    return this.operationService.findOne(id);
   }
 
   @Patch(':id')
@@ -38,11 +37,11 @@ export class OperationController{
     @Param('id') id: string,
     @Body() updateOperationDto: UpdateOperationDto,
   ) {
-    return this.undefinedsService.update(id, updateOperationDto);
+    return this.operationService.update(id, updateOperationDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.undefinedsService.remove(id);
+    return this.operationService.remove(id);
   }
 }

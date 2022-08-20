@@ -3,7 +3,7 @@ import { PrismaService } from '../../prisma/prisma.service';
 import { getPaginationQueryData } from '../../common/pagination-query.dto';
 import { CreateCategoryDto } from '../dto/create-category.dto';
 import { CategoryEntity } from '../entities/category.entity';
-import { FindAllCategorysDto } from '../dto/find-all-categorys.dto';
+import { FindAllCategoriesDto } from '../dto/find-all-categorys.dto';
 import { Prisma } from '@prisma/client';
 import { UpdateCategoryDto } from '../dto/update-category.dto';
 
@@ -19,7 +19,7 @@ export class CategoryService {
     return new CategoryEntity(category);
   }
 
-  async findAll({ name, ...query }: FindAllCategorysDto) {
+  async findAll({ name, ...query }: FindAllCategoriesDto) {
     const where: Prisma.CategoryWhereInput = {
       name: { contains: name, mode: 'insensitive' },
     };
